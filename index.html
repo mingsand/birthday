@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아버지 생신 축하 카드</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0e68c;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            animation: backgroundColorChange 10s infinite;
+            overflow: hidden;
+        }
+
+        @keyframes backgroundColorChange {
+            0% { background-color: #f0e68c; }
+            50% { background-color: #ffcccb; }
+            100% { background-color: #f0e68c; }
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+            position: relative;
+            animation: pop 0.5s ease;
+            z-index: 1;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            color: #ff6347;
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin: 20px 0;
+            animation: slideIn 1s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .confetti {
+            position: absolute;
+            font-size: 2em;
+            animation: fall linear forwards;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🎉✨😘🎉🎉</h2>
+        <h1>생신 추카드려요</h1>
+        <p>❤️사랑하는 아부지 생신 추카❤️</p>
+        <h2>😘✨❤️🎉🎉🎉</h2>
+    </div>
+</body>
+
+
+<script>
+    function createConfetti() {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.textContent = '🎉';
+        document.body.appendChild(confetti);
+
+
+        const left = Math.random() * 100;
+        const duration = Math.random() * 2 + 3;
+
+        confetti.style.left = `${left}vw`;
+        confetti.style.animationDuration = `${duration}s`;
+
+
+        confetti.addEventListener('animationend', () => {
+            confetti.remove();
+        });
+    }
+
+
+    setInterval(createConfetti, 300);
+</script>
+</html>
